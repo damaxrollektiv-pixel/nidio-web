@@ -16,7 +16,7 @@ create table if not exists public.locations (
   description   text,
   lat           float8 not null,
   lng           float8 not null,
-  radius_m      int not null default 5,
+  radius_m      int not null default 70,
   created_at    timestamptz default now() not null,
   updated_at    timestamptz default now() not null
 );

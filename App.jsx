@@ -277,7 +277,7 @@ function Dashboard({ session }) {
   }
   const saveLocation = async (e) => {
     e.preventDefault(); if (!pendingPin) return; setSaving(true); setError('')
-    try { const loc = await createLocation({ name: newName, description: newDesc, lat: pendingPin.lat, lng: pendingPin.lng, radius_m: 5 }); await load(); setSelected(loc); setPendingPin(null); setPanel('location-detail') }
+    try { const loc = await createLocation({ name: newName, description: newDesc, lat: pendingPin.lat, lng: pendingPin.lng, radius_m: 70 }); await load(); setSelected(loc); setPendingPin(null); setPanel('location-detail') }
     catch (e) { setError(e.message) } finally { setSaving(false) }
   }
   const handleDelete = async (id) => {
@@ -329,7 +329,7 @@ function Dashboard({ session }) {
             <form onSubmit={saveLocation} className="form">
               <div className="field"><label>Name</label><input value={newName} onChange={e=>setNewName(e.target.value)} placeholder="z.B. Brandenburger Tor" required /></div>
               <div className="field"><label>Beschreibung (optional)</label><textarea value={newDesc} onChange={e=>setNewDesc(e.target.value)} placeholder="Was gibt es hier zu entdecken?" rows={3} /></div>
-              <div className="field"><label>Radius</label><div className="radius-display">5 Meter</div></div>
+              <div className="field"><label>Radius</label><div className="radius-display">70 Meter</div></div>
               {error && <div className="msg error">{error}</div>}
               <button type="submit" className="btn-primary" disabled={saving||!pendingPin}>{saving?'Speichert…':'Ort speichern'}</button>
             </form>
